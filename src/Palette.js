@@ -1,40 +1,45 @@
 import React, { Component } from 'react'
 import ColorBox from './ColorBox'
 
-import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
+import Navbar from './Navbar'
 import './Palette.css';
 export default class Palette extends Component {
     constructor(props){
         super(props);
         this.state = {
-            level : 500
+            level : 500,
+            format : 'hex',
         }
         this.handleSlide = this.handleSlide.bind(this);
+        this.handleFormat = this.handleFormat.bind(this);
     }
     handleSlide(level){
-        console.log(level);
         this.setState({
             level
         })
     }
+    handleFormat(format){
+        this.setState({
+            format
+        })
+    }
     render() {
-        const { level } = this.state;
-        const colors = this.props.palette.colors[level].map(colorObj => <ColorBox background={colorObj.hex} name={colorObj.name} />)
+        const { level,format } = this.state;
+        const {paletteName, emoji} = this.props.palette;
+        const colors = this.props.palette.colors[level].map(colorObj => <ColorBox key={colorObj.id} background={colorObj[format]} name={colorObj.name} />)
         return (
             <div className="Palette">
-                {/* Nav here */}
-                <div className="slider">
-                    <Slider min={100} max={900} defaultValue={level} step={100} onAfterChange={this.handleSlide}/>
-                </div>
+                <Navbar format={format} handleFormat={this.handleFormat} level={level} handleSlide={this.handleSlide}/>
                 
                 <div className="Palette-colors">
                     {
                         colors
                     }
                 </div>
-                {/* Palette-colors here */}
-                {/* Footer */}
+                <div className="Palette-footer">
+                        <p>{paletteName}</p>
+                        <span className="emoji">{emoji}</span>
+                </div>
             </div>
         )
     }
