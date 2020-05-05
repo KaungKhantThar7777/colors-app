@@ -14,7 +14,6 @@ const styles = {
        }
    },
    colors:{
-       backgroundColor:'grey',
        height:'150px',
        width:'100%',
        
@@ -36,10 +35,8 @@ const styles = {
        height:'25%',
        width:'20%',
        display:'inline-block',
-       margin:'0 auto',
        position:'relative',
-       marginBottom:'-3.5px',
-       
+       marginBottom:'-4px'
    }
 }
 
