@@ -27,19 +27,21 @@ export default class Navbar extends Component {
         })
     }
     render() {
-        const {level, handleSlide, format} = this.props;
+        const {level, handleSlide, format, showSlider} = this.props;
         return (
             <header className="Navbar">
                 <div className="Navbar-title">
                     <Link to="/" className="Navbar-link">reactcolorpicker</Link>
                     
                 </div>
-                <div className="slider-container">
+                {
+                    showSlider && <div className="slider-container">
                     <span className="level-msg">Leval: {level}</span>
                     <div className="slider">
                         <Slider min={100} max={900} defaultValue={level} step={100} onAfterChange={handleSlide}/>
                     </div>
-                </div>
+                    </div>
+                }
                 <div className="select-container">
                     <Select value={format} onChange={this.handleFormat}>
                         <MenuItem value="hex">HEX - #ffffff</MenuItem>

@@ -7,8 +7,10 @@
     cursor: pointer;
     margin-bottom: -3.5px;
 }
-
-.copy-btn{
+.SingleColorPalette .ColorBox{
+    height:50%;
+}
+.copy-btn, .back-btn{
     position:absolute;
     top:50%;
     left:50%;
@@ -23,11 +25,25 @@
     background: rgba(255,255,255,0.3);
     text-transform: uppercase;
     color:white;
-    opacity: 0;
+    text-decoration: none;
     text-align:center;
     border:none
 }
 
+.white-text{
+    color: rgba(255, 255, 255,0.7);
+    background-color:grey;
+}
+.dark-text{
+    color: rgba(0,0,0,0.7);
+    background-color:lightgrey;
+}
+.copy-btn {
+    opacity: 0;
+}
+.backBox{
+    background-color: black;
+}
 .ColorBox:hover .copy-btn{
     opacity: 1;
 }
